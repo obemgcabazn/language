@@ -1,0 +1,19 @@
+doctype html
+html(lang='ru')
+  head
+    include head
+  body
+
+    div#app
+      p {{message}}
+      ol
+        todo-item(v-for="(id, name) in words" v-bind:todo="name")
+
+      div.form-group
+        label(for='inputWord') Незнакомое слово
+        input.form-control#inputWord(type="email" placeholder="Незнакомое слово")
+
+
+      #resultXML {{groceryList}}
+
+    include script

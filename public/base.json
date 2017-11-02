@@ -1,0 +1,14 @@
+{
+  "word": {
+    "id": 1,
+    "name": "converge",
+    "translate": "сходятся",
+    "context": "The line converge at a conceptual point."
+  },
+  "word1": {
+    "id": 2,
+    "name": "converge2",
+    "translate": "сходятся2",
+    "context": "The line coverge at a conceptual point."
+  }
+}
