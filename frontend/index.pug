@@ -4,16 +4,18 @@ html(lang='ru')
     include head
   body
 
-    div#app
-      p {{message}}
-      ol
-        todo-item(v-for="(id, name) in words" v-bind:todo="name")
+    div.container
+      div.row
+        div.col
 
-      div.form-group
-        label(for='inputWord') Незнакомое слово
-        input.form-control#inputWord(type="email" placeholder="Незнакомое слово")
+          div#app
 
+            div.form-group.row
+              label.col-sm-3.col-form-label(for='inputWord') Незнакомое слово
+              div.col-sm-9
+                input.form-control-plaintext#inputWord(type="text" placeholder="Незнакомое слово" v-model="searchWord")
 
-      #resultXML {{groceryList}}
+            div.translation Перевод: {{ searchResult[0] }}
+            div.context Контекст: {{ searchResult[1] }}
 
     include script

@@ -1,42 +1,37 @@
-;(function($){
-    $(function() {
-        var app = new Vue({
-            el: '#app',
-            data: {
-                groceryList: [
-                    {
-                        id: 1,
-                        title: 'Вымыть посуду'
-                    },
-                    {
-                        id: 2,
-                        title: 'Вынести мусор'
-                    },
-                    {
-                        id: 3,
-                        title: 'Подстричь газон'
-                    }
-                ],
-                message: "Сообщение",
-                words: ajaxGetXML()
-            }
-        });
-    });
+Vue.component( '<translation>', {
+  template: '<div></div>'
+});
 
-    function ajaxGetXML(){
-        $.getJSON('base.json', { get_param: 'value' }, function(data) {
+var vm = new Vue({
+  el: '#app',
+  data: {
+    searchWord: 'converge',
+    your_json: {}
+  },
+  mounted: function () {
+    var vm = this;
 
-            var words = [];
-            words.push(data["word"]);
-            words.push(data["word1"]);
-            console.log(words);
-            return words;
-        });
+    jQuery.ajax({
+      type: "POST",
+      url: "base.json",
+      dataType: 'json'
+    }).done(function (response) {
+      vm.your_json = response;
+    })
+
+  },
+  computed: {
+    searchResult: function() {
+      var y = [];
+      var x = this.your_json;
+      for( name in x){
+        if(x[name]["name"] == this.searchWord){
+          y[0] = x[name]["translate"];
+          y[1] = x[name]["context"];
+        }
+      }
+
+      return y;
     }
-})(jQuery);
-
-
-Vue.component('todo-item', {
-    props: ['todo'],
-    template: '<li>{{ todo }}</li>'
+  }
 });
