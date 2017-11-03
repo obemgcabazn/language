@@ -1,5 +1,5 @@
-Vue.component( '<translation>', {
-  template: '<div></div>'
+Vue.component('my-component', {
+    template: '<div>Пользовательский компонент!</div>'
 });
 
 var vm = new Vue({
@@ -17,6 +17,7 @@ var vm = new Vue({
       dataType: 'json'
     }).done(function (response) {
       vm.your_json = response;
+      console.log(response);
     })
 
   },
@@ -35,3 +36,35 @@ var vm = new Vue({
     }
   }
 });
+
+var str = '{ \
+  "events": [ \
+    {"title":"Конференция","date":"2014-11-30T12:00:00.000Z"}, \
+    {"title":"День рождения","date":"2015-04-18T12:00:00.000Z"} \
+  ]\
+}';
+
+var event = JSON.parse(str, function(key, value) {
+    if (key == 'date') return new Date(value);
+    return value;
+});
+
+
+
+console.log( event.events[1].date.getDate() ); // ошибка!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

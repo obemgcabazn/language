@@ -1,20 +1,20 @@
-{
-  "word0": {
+[
+  {
     "number": 1,
     "name": "converge",
     "translate": "Сходятся",
     "context": "The line converge at a conceptual point."
   },
-  "word1": {
+  {
     "number": 2,
     "name": "least",
     "translate": "Как минимум",
     "context": "It`s likely that you already know at least a bit about WordPress"
   },
-  "word2": {
+  {
     "number": 3,
     "name": "probably",
     "translate": "Возможно",
     "context": "You probably realize that it's a brilliant tool for creating a huge variety of websites."
   }
-}
+]
